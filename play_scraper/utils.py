@@ -250,10 +250,18 @@ def parse_app_details(soup):
 
     # Let the user handle modifying the URL to fetch different resolutions
     # Removing the end `=w720-h310-rw` doesn't seem to give original res?
+<<<<<<< HEAD
     # Check 'src' and 'data-src' since it can be one or the other
     screenshots = [
         parse_screenshot_src(img) for img in soup.select("button.Q4vdJd img.DYfLw")
     ]
+=======
+    try:
+        screenshots = [img.attrs['src']
+                   for img in soup.select('button.NIc6yf img.lxGQyd')]
+    except KeyError:
+        screenshots = None
+>>>>>>> catch screenshots exception
 
     try:
         video = soup.select_one('button[data-trailer-url^="https"]').attrs.get(
