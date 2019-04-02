@@ -322,7 +322,12 @@ def parse_app_details(soup):
 
     free = price == "0"
 
+<<<<<<< HEAD
     additional_info_data = parse_additional_info(soup.select_one(".IxB2fe"))
+=======
+    additional_info_data = parse_additional_info(
+        soup.select_one('.IxB2fe'))
+>>>>>>> Update additional info selector
 
     offers_iap = bool(additional_info_data.get("iap_range"))
 
