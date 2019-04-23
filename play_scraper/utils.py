@@ -240,8 +240,16 @@ def parse_app_details(soup):
     :return: a dictionary of app details
     """
     title = soup.select_one('h1[itemprop="name"] span').text
+<<<<<<< HEAD
     icon = soup.select_one('img[class="T75of sHb2Xb"]').attrs["src"].split("=")[0]
     editors_choice = bool(soup.select_one('meta[itemprop="editorsChoiceBadgeUrl"]'))
+=======
+    icon = (soup.select_one('img[class="T75of sHb2Xb"]')
+                .attrs['src']
+                .split('=')[0])
+    editors_choice = bool(
+        soup.select_one('meta[itemprop="editorsChoiceBadgeUrl"]'))
+>>>>>>> fix css class for icon
 
     # Main category will be first
     category = [
