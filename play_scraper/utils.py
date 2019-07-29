@@ -280,7 +280,12 @@ def parse_app_details(soup):
     except AttributeError:
         video = None
 
+<<<<<<< HEAD
     description_soup = soup.select_one('div[itemprop="description"] span div')
+=======
+    description_soup = soup.select_one(
+        'div[itemprop="description"] span div')
+>>>>>>> fix category lookup, descriptions
     if description_soup:
         description = "\n".join(description_soup.stripped_strings)
         description_html = description_soup.encode_contents()
