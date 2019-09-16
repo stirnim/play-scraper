@@ -291,7 +291,7 @@ def parse_app_details(soup):
         ]
         for i in range(5):
             histogram[5 - i] = num_ratings[i]
-    except (AttributeError, KeyError):
+    except AttributeError:
         reviews = 0
 
     try:
