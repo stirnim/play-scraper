@@ -264,7 +264,6 @@ class PlayScraper(object):
         """
         categories = {}
 
-<<<<<<< HEAD
         response = send_request("GET", s.BASE_URL, params=self.params)
         soup = BeautifulSoup(response.content, "lxml", from_encoding="utf8")
 
@@ -272,14 +271,6 @@ class PlayScraper(object):
             'div[id*="action-dropdown-children"] a[href*="category"]'
         )
         age_query = "?age="
-=======
-        response = send_request('GET', s.BASE_URL, params=self.params)
-        soup = BeautifulSoup(response.content,
-                             'lxml',
-                             from_encoding='utf8')
-        category_links = soup.select('div[id*="action-dropdown-children"] a[href*="category"]')
-        age_query = '?age='
->>>>>>> fix category lookup, descriptions
 
         for cat in category_links:
             url = urljoin(s.BASE_URL, cat.attrs["href"])

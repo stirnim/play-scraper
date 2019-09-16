@@ -240,16 +240,8 @@ def parse_app_details(soup):
     :return: a dictionary of app details
     """
     title = soup.select_one('h1[itemprop="name"] span').text
-<<<<<<< HEAD
     icon = soup.select_one('img[class="T75of sHb2Xb"]').attrs["src"].split("=")[0]
     editors_choice = bool(soup.select_one('meta[itemprop="editorsChoiceBadgeUrl"]'))
-=======
-    icon = (soup.select_one('img[class="T75of sHb2Xb"]')
-                .attrs['src']
-                .split('=')[0])
-    editors_choice = bool(
-        soup.select_one('meta[itemprop="editorsChoiceBadgeUrl"]'))
->>>>>>> fix css class for icon
 
     # Main category will be first
     category = [
@@ -258,18 +250,10 @@ def parse_app_details(soup):
 
     # Let the user handle modifying the URL to fetch different resolutions
     # Removing the end `=w720-h310-rw` doesn't seem to give original res?
-<<<<<<< HEAD
     # Check 'src' and 'data-src' since it can be one or the other
     screenshots = [
         parse_screenshot_src(img) for img in soup.select("button.Q4vdJd img.DYfLw")
     ]
-=======
-    try:
-        screenshots = [img.attrs['src']
-                   for img in soup.select('button.NIc6yf img.lxGQyd')]
-    except KeyError:
-        screenshots = None
->>>>>>> catch screenshots exception
 
     try:
         video = soup.select_one('button[data-trailer-url^="https"]').attrs.get(
@@ -280,12 +264,7 @@ def parse_app_details(soup):
     except AttributeError:
         video = None
 
-<<<<<<< HEAD
     description_soup = soup.select_one('div[itemprop="description"] span div')
-=======
-    description_soup = soup.select_one(
-        'div[itemprop="description"] span div')
->>>>>>> fix category lookup, descriptions
     if description_soup:
         description = "\n".join(description_soup.stripped_strings)
         description_html = description_soup.encode_contents()
@@ -335,12 +314,7 @@ def parse_app_details(soup):
 
     free = price == "0"
 
-<<<<<<< HEAD
     additional_info_data = parse_additional_info(soup.select_one(".IxB2fe"))
-=======
-    additional_info_data = parse_additional_info(
-        soup.select_one('.IxB2fe'))
->>>>>>> Update additional info selector
 
     offers_iap = bool(additional_info_data.get("iap_range"))
 
